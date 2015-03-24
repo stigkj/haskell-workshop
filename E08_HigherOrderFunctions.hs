@@ -53,7 +53,7 @@ mySet1 = intersect evens divBy3
 -}
 
 singleton :: Int -> Set
-singleton n = _YOUR_CODE_HERE
+singleton n = \x -> x == n
 
 {-
     Exercise:
@@ -61,7 +61,9 @@ singleton n = _YOUR_CODE_HERE
 -}
 
 union :: Set -> Set -> Set
-union a b = _YOUR_CODE_HERE
+union a b = \x -> let memberOfA = a x
+                      memberOfB = b x
+                   in memberOfA || memberOfB
 
 {-
     Exercise:
@@ -71,4 +73,7 @@ union a b = _YOUR_CODE_HERE
 -}
 
 difference :: Set -> Set -> Set
-difference a b = _YOUR_CODE_HERE
+difference a b = \x -> let memberOfA = a x
+                           notMemberOfB = not (b x)
+                        in memberOfA && notMemberOfB
+
